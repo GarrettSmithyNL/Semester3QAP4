@@ -1,0 +1,24 @@
+{
+  "name": "qap4",
+  "version": "1.0.0",
+  "description": "QAP4 for Fullstack and Database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GarrettSmithyNL/Semester3QAP4.git"
+  },
+  "author": "Garrett Smtih",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GarrettSmithyNL/Semester3QAP4/issues"
+  },
+  "homepage": "https://github.com/GarrettSmithyNL/Semester3QAP4#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "pg": "^8.12.0"
+  }
+}

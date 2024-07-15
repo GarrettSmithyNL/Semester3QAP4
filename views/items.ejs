@@ -4,6 +4,30 @@
     <%- include('./partials/nav') %>
     <h1>Items</h1>
     <div class="itemsContent">
-      <p>This is the items</p>
+      <% if(items.length > 0) { %>
+        <% items.forEach(item => { %>
+          <div>
+            <%= item.item_id %>
+            ||
+            <%= item.item_name %>
+            ||
+            <%= item.membership_requirement %>
+            ||
+            <%= item.tradeable %>
+            ||
+            <% if(item.equipment_slot === null) { %>
+              <%= "no equiped" %>
+            <% } else { %>
+              <%= item.equipment_slot %>
+            <% } %> 
+            ||
+            <%= item.catagory %>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <div>No items found</div>
+      <% } %>
     </div>
+    <br>
+    <%- include('./partials/footer') %>
 </html>

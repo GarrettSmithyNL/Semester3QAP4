@@ -29,8 +29,8 @@ const items = [
 ];
 
 router.get("/", async (req, res) => {
-  console.table(items);
-  res.render("items/index", { items: items });
+  if (DEBUG) console.table(items);
+  res.render("items", { items: items });
 });
 
 module.exports = router;

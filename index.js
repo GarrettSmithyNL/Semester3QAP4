@@ -8,9 +8,8 @@ app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
-app.get("/items", (req, res) => {
-  //code goes here
-});
+const itemsRouter = require("./routes/items");
+app.use("/items", itemsRouter);
 
 app.listen(port, () => {
   console.log("Server Running on port 3000");

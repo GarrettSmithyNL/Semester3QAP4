@@ -1,0 +1,15 @@
+insert into osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) values (2361, 'adamantite bar', false, true, null, 'tool');
+insert into osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) values (1275, 'rune pickaxe', false, true , 'weapon', 'weapon');
+insert into osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) values (499, 'adamantite ore', false, true, null, 'ore');
+insert into osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) values (1513, 'magic logs', true, true, null, 'log');
+insert into osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) values (385, 'shark', true, true, null, 'food');
+insert into osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) values (301, 'lobster pot', true, true, null, 'tool');
+insert into osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) values (536, 'dragon bones', false, true, null, 'tool');
+insert into osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) values (113, 'strength potion(4)', false, true, null, 'potion');
+insert into osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) values (775, 'Cooking guantlets', true, false, 'hands', 'armor');
+insert into osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) values (1515, 'Yew logs', false, true, null, 'log');
+insert into osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) values (1704, 'amulet of glory', true, true, 'neck', 'jewelry');
+insert into osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) values (1215, 'dragon dagger', true, true, 'weapon', 'weapon');
+insert into osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) values (19550, 'ring of suffering', true, true, 'ring', 'jewelry');
+insert into osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) values (6522, 'toktz-xil-ul', true, true, 'weapon', 'weapon');
+insert into osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) values (1141, 'steel med helm', false, true, 'head', 'armor');

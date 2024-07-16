@@ -1,32 +1,37 @@
 <html lang="en">
   <%- include('./partials/head') %>
   <body>
-    <%- include('./partials/nav') %>
     <h1>Items</h1>
     <div class="itemsContent">
+      <table border="1px solid black">
+        <tr>
+          <th>Item ID</th>
+          <th>Item Name</th>
+          <th>Membership Requirement</th>
+          <th>Tradeable</th>
+          <th>Equipment Slot</th>
+          <th>Catagory</th>
+        </tr>
       <% if(items.length > 0) { %>
         <% items.forEach(item => { %>
-          <div>
-            <%= item.item_id %>
-            ||
-            <%= item.item_name %>
-            ||
-            <%= item.membership_requirement %>
-            ||
-            <%= item.tradeable %>
-            ||
+          <tr>
+            <td><%= item.item_id %></td>
+            <td><%= item.item_name %></td>
+            <td><%= item.membership_requirement %></td>
+            <td><%= item.tradeable %></td>
             <% if(item.equipment_slot === null) { %>
-              <%= "no equiped" %>
+              <td><%= "N/A" %></td>
             <% } else { %>
-              <%= item.equipment_slot %>
+              <td><%= item.equipment_slot %></td>
             <% } %> 
-            ||
-            <%= item.catagory %>
-          </div>
+            <td><%= item.catagory %></td>
         <% }) %>
       <% } else { %>
-        <div>No items found</div>
+        <tr>
+          <td>No Items</td>
+        </tr>
       <% } %>
+      </table>
     </div>
     <br>
     <%- include('./partials/footer') %>

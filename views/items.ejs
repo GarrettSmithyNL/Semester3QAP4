@@ -1,10 +1,14 @@
 <html lang="en">
+  <!-- includes the head -->
   <%- include('./partials/head') %>
   <body>
+    <!-- includes the nav -->
     <%- include('./partials/nav') %>
+    <!-- Shows the table of items in the database -->
     <h1>Items</h1>
     <div class="itemsContent">
       <table border="1px solid black">
+        <!-- Table headers -->
         <tr>
           <th>Item ID</th>
           <th>Item Name</th>
@@ -13,6 +17,7 @@
           <th>Equipment Slot</th>
           <th>Catagory</th>
         </tr>
+      <!-- Loops through the items array and displays the item information -->
       <% if(items.length > 0) { %>
         <% items.forEach(item => { %>
           <tr>
@@ -20,6 +25,7 @@
             <td><%= item.item_name %></td>
             <td><%= item.membership_requirement %></td>
             <td><%= item.tradeable %></td>
+            <!-- If the equipment slot is null, display N/A -->
             <% if(item.equipment_slot === null) { %>
               <td><%= "N/A" %></td>
             <% } else { %>
@@ -28,6 +34,7 @@
             <td><%= item.catagory %></td>
         <% }) %>
       <% } else { %>
+        <!-- If there are no items in the database, display "No Items" -->
         <tr>
           <td>No Items</td>
         </tr>
@@ -35,61 +42,70 @@
       </table>
     </div>
     <br>
+
+    <!-- Adds a status to update the user -->
+    <%- include('./partials/status') %>
+
+    <!-- Form to add an item to the database -->
     <form action="/items" method="post">
-      <label>Add Item:</label>
-      <br>
+      <h3>Add Item:</h3>
+      <!-- Gets the itemID as text field -->
       <label>Item ID:
         <input type="text" id="itemID" name="itemID" value="<%= locals.itemID %>" required>
       </label>
       <br>
+      <!-- Gets the itemName as text field -->
       <label>Item Name:
         <input type="text" id="itemName" name="itemName" value="<%= locals.itemName %>" required>
       </label>
       <br>
+      <!-- Gets the membershipReq as checks boxes -->
       <label>Membership Required:
         <input type="checkbox" id="membershipReq" name="membershipReq" value="on"<%= locals.membershipReq ? 'checked' : '' %>>
         <input type="hidden" name="membershipReq" value="off" >
       </label>
       <br>
+      <!-- Gets the tradeable as checks boxes -->
       <label>Tradeable:
         <input type="checkbox" id="tradeable" name="tradeable" value="on"<%= locals.tradeable ? 'checked' : '' %>>
         <input type="hidden" name="tradeable" value="off" >
       </label>
       <br>
+      <!-- Gets the equipmentSlot as a dropdown -->
       <label>Equipment Slot:</label>
+        <select name="equipmentSlot" id="equipmentSlot" required>
+          <option disabled selected value="">Select Option</option>
+          <option value="notEquipable" <%= locals.equipmentSlot %>>Not Equipable</option>
+          <option value="head" <%= locals.equipmentSlot %>>Head</option>
+          <option value="cape" <%= locals.equipmentSlot %>>Cape</option>
+          <option value="neck" <%= locals.equipmentSlot %>>Neck</option>
+          <option value="ammo" <%= locals.equipmentSlot %>>Ammo</option>
+          <option value="weapon" <%= locals.equipmentSlot %>>Weapon</option>
+          <option value="body" <%= locals.equipmentSlot %>>Body</option>
+          <option value="hands" <%= locals.equipmentSlot %>>Hands</option>
+          <option value="feet" <%= locals.equipmentSlot %>>Feet</option>
+          <option value="ring" <%= locals.equipmentSlot %>>Ring</option>
+        </select>
       <br>
-      <label>Head:<input type="checkbox" id="headSlot" name="headSlot" value="on"<%= locals.headSlot ? 'checked' : '' %> ></label>
-      <input type="hidden" name="headSlot" value="off" >
-      <label >Cape:<input type="checkbox" id="capeSlot" name="capeSlot" value="on"<%= locals.capeSlot ? 'checked' : '' %> ></label>
-      <input type="hidden" name="capeSlot" value="off" >
-      <label>Neck:<input type="checkbox" id="neckSlot" name="neckSlot" value="on"<%= locals.neckSlot ? 'checked' : ''%>></label>
-      <input type="hidden" name="neckSlot" value="off" >
+      <!-- Gets the catagory as a dropdown -->
+      <label>Catagory:</label>
+        <select name="catagory" id="catagory" required>
+          <option disabled selected value="">Select Option</option>
+          <option value="weapon" <%= locals.catagory %>>Weapon</option>
+          <option value="armor" <%= locals.catagory %>>Armor</option>
+          <option value="log" <%= locals.catagory %>>Log</option>
+          <option value="ore" <%= locals.catagory %>>Ore</option>
+          <option value="potion" <%= locals.catagory %>>Potion</option>
+          <option value="food" <%= locals.catagory %>>Food</option>
+          <option value="ingot" <%= locals.catagory %>>Ingot</option>
+          <option value="crafting" <%= locals.catagory %>>Crafting</option>
+          <option value="rune" <%= locals.catagory %>>Rune</option>
+        </select>
       <br>
-      <label>Ammo:<input type="checkbox" id="ammoSlot" name="ammoSlot" value="on"<%= locals.ammoSlot ? 'checked' : ''%>></label>
-      <input type="hidden" name="ammoSlot" value="off" >    
-      <label>Weapon:<input type="checkbox" id="weaponSlot" name="weaponSlot" value="on"<%= locals.weaponSlot ? 'checked' : ''%>></label>
-      <input type="hidden" name="weaponSlot" value="off" >
-      <label>Body:<input type="checkbox" id="bodySlot" name="bodySlot" value="on"<%= locals.bodySlot ? 'checked' : ''%>></label>
-      <input type="hidden" name="bodySlot" value="off">
-      <br>
-      <label>Hands:<input type="checkbox" id="handsSlot" name="handsSlot" value="on"<%= locals.handsSlot ? 'checked' : ''%>></label>
-      <input type="hidden" name="handsSlot" value="off" >
-      <label>Feet:<input type="checkbox" id="feetSlot" name="feetSlot" value="on"<%= locals.feetSlot ? 'checked' : ''%>></label>
-      <input type="hidden" name="feetSlot" value="off" >
-      <label>Ring:<input type="checkbox" id="ringSlot" name="ringSlot" value="on"<%= locals.ringSlot ? 'checked' : ''%>></label>
-      <input type="hidden" name="ringSlot" value="off" >
-      <br>
-      <label>Not Equipable:<input type="checkbox" id="notEquipable" name="notEquipable" value="on"<%= locals.notEquipable ? 'checked' : ''%>></label>
-      <input type="hidden" name="notEquipable" value="off" >
-      
-      <br>
-      <label>Catagory:
-        <input type="text" id="catagory" name="catagory" value="<%= locals.catagory %>" required>
-      </label>
-      <br>
+      <!-- Submit button -->
       <button>Submit</button>
     </form>
     <br>
-    <br>
+    <!-- includes the footer -->
     <%- include('./partials/footer') %>
 </html>

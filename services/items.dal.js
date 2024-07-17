@@ -23,15 +23,6 @@ let addItem = async (
   catagory
 ) => {
   if (DEBUG) console.log("addItem() called");
-  if (DEBUG)
-    console.log(
-      itemID,
-      itemName,
-      membershipReq,
-      tradeable,
-      equipmentSlot,
-      catagory
-    );
   return new Promise((resolve, reject) => {
     const sql =
       "INSERT INTO osrs_items (item_id, item_name, membership_requirement, tradeable, equipment_slot, catagory) VALUES ($1, $2, $3, $4, $5, $6)";
@@ -40,7 +31,6 @@ let addItem = async (
       [itemID, itemName, membershipReq, tradeable, equipmentSlot, catagory],
       (error, results) => {
         if (error) {
-          if (DEBUG) console.log(error);
           reject(error);
         } else {
           resolve(results);

@@ -46,6 +46,24 @@ router.get("/", async (request, response) => {
   }
 });
 
+router.get("/:id", async (request, response) => {
+  try {
+    if (DEBUG) console.log(request.params.id);
+    let theItem = await itemsDal.getItemByID(request.params.id);
+    if (DEBUG) console.table(theItem);
+    if (DEBUG) console.log(request.app.locals.status);
+    response.render("item", {
+      item: theItem[0],
+      status: request.app.locals.status,
+    });
+    return;
+  } catch {
+    if (DEBUG) console.log("Error in items.js router.get(/:id)");
+    response.render("503");
+    return;
+  }
+});
+
 router.post("/", async (request, response) => {
   if (DEBUG) console.log("POST request received");
   if (DEBUG) console.log(request.body);

@@ -22,7 +22,7 @@
         <% items.forEach(item => { %>
           <tr>
             <td><%= item.item_id %></td>
-            <td><%= item.item_name %></td>
+            <td><a href="/items/<%=item.item_id%>"><%= item.item_name %></a></td>
             <td><%= item.membership_requirement %></td>
             <td><%= item.tradeable %></td>
             <!-- If the equipment slot is null, display N/A -->

@@ -40,7 +40,22 @@ let addItem = async (
   });
 };
 
+let getItemByID = async (id) => {
+  if (DEBUG) console.log("getItem() called");
+  return new Promise((resolve, reject) => {
+    const sql = "SELECT * FROM osrs_items WHERE item_id = $1";
+    dal.query(sql, [id], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results.rows);
+      }
+    });
+  });
+};
+
 module.exports = {
   getItems,
   addItem,
+  getItemByID,
 };

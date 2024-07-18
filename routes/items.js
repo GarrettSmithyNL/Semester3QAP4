@@ -33,7 +33,6 @@ router.get("/", async (request, response) => {
   try {
     let theItems = await itemsDal.getItems();
     if (DEBUG) console.table(theItems);
-    if (DEBUG) console.log(request.app.locals.status);
     response.render("items", {
       items: theItems,
       status: request.app.locals.status,
@@ -48,10 +47,8 @@ router.get("/", async (request, response) => {
 
 router.get("/:id", async (request, response) => {
   try {
-    if (DEBUG) console.log(request.params.id);
     let theItem = await itemsDal.getItemByID(request.params.id);
     if (DEBUG) console.table(theItem);
-    if (DEBUG) console.log(request.app.locals.status);
     response.render("item", {
       item: theItem[0],
       status: request.app.locals.status,
@@ -64,9 +61,38 @@ router.get("/:id", async (request, response) => {
   }
 });
 
+router.get("/:id/delete", async (request, response) => {
+  try {
+    let theItem = await itemsDal.getItemByID(request.params.id);
+    if (DEBUG) console.table(theItem);
+    response.render("itemDelete", {
+      item: theItem[0],
+      status: request.app.locals.status,
+    });
+    return;
+  } catch {
+    if (DEBUG) console.log("Error in items.js router.get(/:id/delete)");
+    response.render("503");
+    return;
+  }
+});
+
+router.delete("/:id", async (request, response) => {
+  if (DEBUG) console.log("DELETE request received");
+  try {
+    await itemsDal.deleteItem(request.params.id);
+    request.app.locals.status = "Item Deleted Successfully";
+    response.redirect("/items");
+    return;
+  } catch {
+    if (DEBUG) console.log("Error in items.js router.delete(/:id)");
+    response.render("503");
+    return;
+  }
+});
+
 router.post("/", async (request, response) => {
   if (DEBUG) console.log("POST request received");
-  if (DEBUG) console.log(request.body);
   try {
     await itemsDal.addItem(
       request.body.itemID,

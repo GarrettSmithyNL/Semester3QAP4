@@ -14,6 +14,20 @@ let getItems = async () => {
   });
 };
 
+let getItemByID = async (id) => {
+  if (DEBUG) console.log("getItem() called");
+  return new Promise((resolve, reject) => {
+    const sql = "SELECT * FROM osrs_items WHERE item_id = $1";
+    dal.query(sql, [id], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results.rows);
+      }
+    });
+  });
+};
+
 let addItem = async (
   itemID,
   itemName,
@@ -33,17 +47,17 @@ let addItem = async (
         if (error) {
           reject(error);
         } else {
-          resolve(results);
+          resolve(results.rows);
         }
       }
     );
   });
 };
 
-let getItemByID = async (id) => {
-  if (DEBUG) console.log("getItem() called");
+let deleteItem = (id) => {
+  if (DEBUG) console.log("deleteItem() called");
   return new Promise((resolve, reject) => {
-    const sql = "SELECT * FROM osrs_items WHERE item_id = $1";
+    const sql = "DELETE FROM osrs_items WHERE item_id = $1";
     dal.query(sql, [id], (error, results) => {
       if (error) {
         reject(error);
@@ -58,4 +72,5 @@ module.exports = {
   getItems,
   addItem,
   getItemByID,
+  deleteItem,
 };

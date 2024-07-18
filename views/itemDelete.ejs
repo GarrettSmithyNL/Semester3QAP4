@@ -1,0 +1,18 @@
+<html>
+  <%- include('./partials/head') %>
+  <body>
+    <%- include('./partials/nav') %>
+    <div>
+      <form
+        action="/items/<%= item.item_id %>/<%= locals.theID %>?_method=DELETE"
+        method="POST"
+      >
+        <label>
+          Are you sure you want to delete this item?
+          <br />
+          <button>DELETE</button>
+        </label>
+      </form>
+    </div>
+  </body>
+</html>

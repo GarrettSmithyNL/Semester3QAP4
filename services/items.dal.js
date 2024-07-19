@@ -14,11 +14,11 @@ let getItems = async () => {
   });
 };
 
-let getItemByID = async (id) => {
+let getItemByID = async (itemID) => {
   if (DEBUG) console.log("getItem() called");
   return new Promise((resolve, reject) => {
     const sql = "SELECT * FROM osrs_items WHERE item_id = $1";
-    dal.query(sql, [id], (error, results) => {
+    dal.query(sql, [itemID], (error, results) => {
       if (error) {
         reject(error);
       } else {
@@ -54,11 +54,11 @@ let addItem = async (
   });
 };
 
-let deleteItem = (id) => {
+let deleteItem = (itemID) => {
   if (DEBUG) console.log("deleteItem() called");
   return new Promise((resolve, reject) => {
     const sql = "DELETE FROM osrs_items WHERE item_id = $1";
-    dal.query(sql, [id], (error, results) => {
+    dal.query(sql, [itemID], (error, results) => {
       if (error) {
         reject(error);
       } else {
@@ -68,9 +68,41 @@ let deleteItem = (id) => {
   });
 };
 
+let editItem = (
+  itemID,
+  itemName,
+  membershipReq,
+  tradeable,
+  equipmentSlot,
+  catagory
+) => {
+  if (DEBUG) console.log("editItem() called");
+  return new Promise((resolve, reject) => {
+    const sql = `UPDATE osrs_items SET 
+                  item_name = $2, 
+                  membership_requirement = $3, 
+                  tradeable = $4, 
+                  equipment_slot = $5, 
+                  catagory = $6 
+                WHERE item_id = $1`;
+    dal.query(
+      sql,
+      [itemID, itemName, membershipReq, tradeable, equipmentSlot, catagory],
+      (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(results.rows);
+        }
+      }
+    );
+  });
+};
+
 module.exports = {
   getItems,
   addItem,
   getItemByID,
   deleteItem,
+  editItem,
 };

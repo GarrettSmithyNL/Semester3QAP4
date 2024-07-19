@@ -3,23 +3,25 @@
   <body>
     <%- include('./partials/nav') %>
     <div>
-      <h2>Item:</h2>
-      <% if(item) { %>
-      <h3><%= item.item_name %></h3>
-      <p>Item ID: <%= item.item_id %></p>
-      <p>Membership: <%= item.membership_requirement %></p>
-      <p>Tradeable: <%= item.tradeable %></p>
-      <% if (item.equipment_slot === null) { %>
-      <p>Equipment Slot: N/A</p>
+      <h2>Item: <% if(item) { %><%= item.item_name %></h2>
+        <p>Item ID: <%= item.item_id %></p>
+        <p>Membership: <%= item.membership_requirement %></p>
+        <p>Tradeable: <%= item.tradeable %></p>
+        <% if (item.equipment_slot === null) { %>
+          <p>Equipment Slot: N/A</p>
+        <% } else { %>
+          <p>Equipment Slot: <%= item.equipment_slot %></p>
+        <% } %>
+        <p>Category: <%= item.catagory %></p>
       <% } else { %>
-      <p>Equipment Slot: <%= item.equipment_slot %></p>
-      <% } %>
-      <p>Category: <%= item.catagory %></p>
-      <% } else { %>
-      <p>No item found</p>
+        <p>No item found</p>
       <% } %>
     </div>
     <div>
+      <a href="/items/<%= item.item_id %>/edit">
+        <button>Edit</button>
+      </a>
+      <br>
       <a href="/items/<%= item.item_id %>/delete">
         <button>Delete</button>
       </a>

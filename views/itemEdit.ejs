@@ -2,202 +2,204 @@
   <%- include('./partials/head') %>
   <body>
     <%- include('./partials/nav') %>
+    <div class="addItem">
     <h1>Edit Item - <%=item.item_id%></h1>
     <form
       action="/items/<%= item.item_id %>/<%= locals.theID %>?_method=PATCH"
       method="POST"
     >
-      <!-- Sends the item id -->
-      <input
-        type="hidden"
-        id="itemID"
-        name="itemID"
-        value="<%= item.item_id %>"
-      />
-      
-      <!-- Get the name from the user -->
-      <label>
-        Item Name:
-        <input
-          type="text"
-          id="itemName"
-          name="itemName"
-          value="<%= item.item_name %><%= locals.itemName %>"
-          required
-        />
-      </label>
-      <br />
-
-      <!-- Gets the Membership requirement -->
-      <label>
-        Membership Required: 
-        <input 
-          type="checkbox" 
-          id="membershipReq"
-          name="membershipReq" 
-          value="on"<%= locals.membershipReq ? 'checked' : '' %>
-          <%= item.membership_requirement ? 'checked' : '' %>
-        />
-          
+      <div class="editItemsOptions">
+        <!-- Sends the item id -->
         <input
           type="hidden"
-          name="membershipReq"
-          value="off"
+          id="itemID"
+          name="itemID"
+          value="<%= item.item_id %>"
         />
-      </label>
-      <br />
+        
+        <!-- Get the name from the user -->
+        <label class="textInput">Item Name:
+          <input
+            type="text"
+            id="itemName"
+            name="itemName"
+            value="<%= item.item_name %><%= locals.itemName %>"
+            autocomplete="off"
+            required
+          />
+        </label>
 
-      <!-- Gets the tradeable -->
-      <label>Tradeable: 
-        <input 
-          type="checkbox"
-          id="tradeable"
-          name="tradeable"
-          value="on"<%= locals.tradeable ? 'checked' : '' %>
-          <%= item.tradeable ? 'checked' : '' %>
-        />
-        <input
-          type="hidden"
-          name="tradeable"
-          value="off"
-        />
-      </label>
-      <br />
+        <!-- Gets the Membership requirement -->
+        <label class="checkBox">Membership Required: 
+          <input 
+            type="checkbox" 
+            id="membershipReq"
+            name="membershipReq" 
+            value="on"<%= locals.membershipReq ? 'checked' : '' %>
+            <%= item.membership_requirement ? 'checked' : '' %>
+          />
+          <input
+            type="hidden"
+            name="membershipReq"
+            value="off"
+          />
+          <span class="checkBoxSpan"></span>
+        </label>
 
-      <!-- Gets the Equipment Slot -->
-      <label>Equipment Slot:
-        <select
-          name="equipmentSlot"
-          id="equipmentSlot"
-          required
-        >
-          <option 
-            value="notEquipable" <%= "locals.equipmentSlot" %>
-            <%= item.equipment_slot === null ? 'selected' : '' %>
-          >
-            Not Equipable
-          </option>
-          <option 
-            value="head" <%= "locals.equipmentSlot" %>
-            <%= item.equipment_slot === 'head' ? 'selected' : '' %>
-          >
-            Head
-          </option>
-          <option 
-            value="cape"<%= "locals.equipmentSlot" %>
-            <%= item.equipment_slot === 'cape' ? 'selected' : '' %>
-          >
-            Cape
-          </option>
-          <option 
-            value="neck"<%= "locals.equipmentSlot" %>
-            <%= item.equipment_slot === 'neck' ? 'selected' : '' %>
-          >
-            Neck
-          </option>
-          <option 
-            value="ammo"<%= "locals.equipmentSlot" %>
-            <% item.equipment_slot === 'ammo' ? 'selected' : '' %>
-          >
-            Ammo
-          </option>
-          <option 
-            value="weapon"<%= "locals.equipmentSlot" %>
-            <%= item.equipment_slot === 'weapon' ? 'selected' : '' %>
-          >
-            Weapon
-          </option>
-          <option 
-            value="body"<%= "locals.equipmentSlot" %>
-            <%= item.equipment_slot === 'body' ? 'selected' : '' %>
-          >
-            Body
-          </option>
-          <option 
-            value="hands"<%= "locals.equipmentSlot" %>
-            <%= item.equipment_slot === 'hands' ? 'selected' : '' %>
-          >
-            Hands
-          </option>
-          <option 
-            value="feet"<%= "locals.equipmentSlot" %>
-            <%= item.equipment_slot === 'feet' ? 'selected' : '' %>
-          >
-            Feet
-          </option>
-          <option 
-            value="ring"<%= "locals.equipmentSlot" %>
-            <%= item.equipment_slot === 'ring' ? 'selected' : '' %>
-          >
-            Ring
-          </option>
-        </select>
-      </label>
-      <br />
+        <div class="textInput"></div>
 
-        <!-- Gets the catagory as a dropdown -->
-      <label>Catagory:
-        <select name="catagory" id="catagory" required>
-          <option 
-            value="weapon"<%="locals.catagory"%>
-            <%= item.catagory === 'weapon' ? 'selected' : '' %>
-          >
-            Weapon
-          </option>
-          <option 
-            value="armor"<%="locals.catagory"%>
-            <%= item.catagory === 'armor' ? 'selected' : '' %>
-          >
-            Armor
-          </option>
-          <option 
-            value="log"<%="locals.catagory"%>
-            <%= item.catagory === 'log' ? 'selected' : '' %>
-          >
-            Log
-          </option>
-          <option 
-            value="ore"<%="locals.catagory"%>
-            <%= item.catagory === 'ore' ? 'selected' : '' %>
-          >
-            Ore
-          </option>
-          <option 
-            value="potion"<%="locals.catagory"%>
-            <%= item.catagory === 'potion' ? 'selected' : '' %>
-          >
-            Potion
-          </option>
-          <option 
-            value="food"<%="locals.catagory"%>
-            <%= item.catagory === 'food' ? 'selected' : '' %>
-          >
-            Food
-          </option>
-          <option 
-            value="ingot"<%="locals.catagory"%>
-            <%= item.catagory === 'ingot' ? 'selected' : '' %>
-          >
-            Ingot
-          </option>
-          <option 
-            value="crafting"<%="locals.catagory"%>
-            <%= item.catagory === 'crafting' ? 'selected' : '' %>
-          >
-            Crafting
-          </option>
-          <option 
-            value="rune"<%="locals.catagory"%>
-            <%= item.catagory === 'rune' ? 'selected' : '' %>
-          >
-            Rune
-          </option>
-        </select>
-      </label>
-      <br />
+        <!-- Gets the tradeable -->
+        <label class="checkBox" id="editTrade">Tradeable: 
+          <input 
+            type="checkbox"
+            id="tradeable"
+            name="tradeable"
+            value="on"<%= locals.tradeable ? 'checked' : '' %>
+            <%= item.tradeable ? 'checked' : '' %>
+          />
+          <input
+            type="hidden"
+            name="tradeable"
+            value="off"
+          />
+          <span class="checkBoxSpan"></span>
+        </label>
 
-      <!-- Submit button -->
-      <button>Submit</button>
+        <!-- Gets the Equipment Slot -->
+        <label class="selectMenu">Equipment Slot:
+          <select
+            name="equipmentSlot"
+            id="equipmentSlot"
+            required
+          >
+            <option 
+              value="notEquipable" <%= "locals.equipmentSlot" %>
+              <%= item.equipment_slot === null ? 'selected' : '' %>
+            >
+              Not Equipable
+            </option>
+            <option 
+              value="head" <%= "locals.equipmentSlot" %>
+              <%= item.equipment_slot === 'head' ? 'selected' : '' %>
+            >
+              Head
+            </option>
+            <option 
+              value="cape"<%= "locals.equipmentSlot" %>
+              <%= item.equipment_slot === 'cape' ? 'selected' : '' %>
+            >
+              Cape
+            </option>
+            <option 
+              value="neck"<%= "locals.equipmentSlot" %>
+              <%= item.equipment_slot === 'neck' ? 'selected' : '' %>
+            >
+              Neck
+            </option>
+            <option 
+              value="ammo"<%= "locals.equipmentSlot" %>
+              <% item.equipment_slot === 'ammo' ? 'selected' : '' %>
+            >
+              Ammo
+            </option>
+            <option 
+              value="weapon"<%= "locals.equipmentSlot" %>
+              <%= item.equipment_slot === 'weapon' ? 'selected' : '' %>
+            >
+              Weapon
+            </option>
+            <option 
+              value="body"<%= "locals.equipmentSlot" %>
+              <%= item.equipment_slot === 'body' ? 'selected' : '' %>
+            >
+              Body
+            </option>
+            <option 
+              value="hands"<%= "locals.equipmentSlot" %>
+              <%= item.equipment_slot === 'hands' ? 'selected' : '' %>
+            >
+              Hands
+            </option>
+            <option 
+              value="feet"<%= "locals.equipmentSlot" %>
+              <%= item.equipment_slot === 'feet' ? 'selected' : '' %>
+            >
+              Feet
+            </option>
+            <option 
+              value="ring"<%= "locals.equipmentSlot" %>
+              <%= item.equipment_slot === 'ring' ? 'selected' : '' %>
+            >
+              Ring
+            </option>
+          </select>
+        </label>
+
+          <!-- Gets the catagory as a dropdown -->
+        <label class="selectMenu">Catagory:
+          <select name="catagory" id="catagory" required>
+            <option 
+              value="weapon"<%="locals.catagory"%>
+              <%= item.catagory === 'weapon' ? 'selected' : '' %>
+            >
+              Weapon
+            </option>
+            <option 
+              value="armor"<%="locals.catagory"%>
+              <%= item.catagory === 'armor' ? 'selected' : '' %>
+            >
+              Armor
+            </option>
+            <option 
+              value="log"<%="locals.catagory"%>
+              <%= item.catagory === 'log' ? 'selected' : '' %>
+            >
+              Log
+            </option>
+            <option 
+              value="ore"<%="locals.catagory"%>
+              <%= item.catagory === 'ore' ? 'selected' : '' %>
+            >
+              Ore
+            </option>
+            <option 
+              value="potion"<%="locals.catagory"%>
+              <%= item.catagory === 'potion' ? 'selected' : '' %>
+            >
+              Potion
+            </option>
+            <option 
+              value="food"<%="locals.catagory"%>
+              <%= item.catagory === 'food' ? 'selected' : '' %>
+            >
+              Food
+            </option>
+            <option 
+              value="ingot"<%="locals.catagory"%>
+              <%= item.catagory === 'ingot' ? 'selected' : '' %>
+            >
+              Ingot
+            </option>
+            <option 
+              value="crafting"<%="locals.catagory"%>
+              <%= item.catagory === 'crafting' ? 'selected' : '' %>
+            >
+              Crafting
+            </option>
+            <option 
+              value="rune"<%="locals.catagory"%>
+              <%= item.catagory === 'rune' ? 'selected' : '' %>
+            >
+              Rune
+            </option>
+          </select>
+        </label>
+
+        <!-- Submit button -->
+        <button>Submit</button>
+      </div> 
     </form>
+    </div>
   </body>
+  <%- include('./partials/footer') %>
 </html>

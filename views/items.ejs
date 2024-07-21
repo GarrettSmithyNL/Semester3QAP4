@@ -54,7 +54,7 @@
       <form action="/items" method="post">
         <div class="addItemsOptions">
           <!-- Gets the itemID as text field -->
-          <label>Item ID:
+          <label class="textInput">Item ID:
             <input
               type="text"
               id="itemID"
@@ -64,20 +64,6 @@
               required
             />
           </label>
-          <br />
-
-          <!-- Gets the itemName as text field -->
-          <label>Item Name:
-            <input
-              type="text"
-              id="itemName"
-              name="itemName"
-              value="<%= locals.itemName %>"
-              autocomplete="off"
-              required
-            />
-          </label>
-          <br />
 
           <!-- Gets the membershipReq as checks boxes -->
           <label class="checkBox">Membership Required: 
@@ -94,7 +80,18 @@
             />
             <span class="checkBoxSpan"></span>
           </label>
-          <br />
+
+          <!-- Gets the itemName as text field -->
+          <label class="textInput">Item Name:
+            <input
+              type="text"
+              id="itemName"
+              name="itemName"
+              value="<%= locals.itemName %>"
+              autocomplete="off"
+              required
+            />
+          </label>
 
           <!-- Gets the tradeable as checks boxes -->
           <label class="checkBox">Tradeable: 
@@ -111,10 +108,9 @@
             />
             <span class="checkBoxSpan"></span>
           </label>
-          <br />
           
           <!-- Gets the equipmentSlot as a dropdown -->
-          <label>Equipment Slot:
+          <label class="selectMenu">Equipment Slot:
             <select
               name="equipmentSlot"
               id="equipmentSlot"
@@ -155,10 +151,9 @@
               </option>
             </select>
           </label>
-          <br />
 
           <!-- Gets the catagory as a dropdown -->
-          <label>Catagory:
+          <label class="selectMenu">Catagory:
             <select name="catagory" id="catagory" required>
               <option disabled selected value="">
                 Select Option
@@ -192,7 +187,6 @@
               </option>
             </select>
           </label>
-          <br />
 
           <!-- Submit button -->
           <button>Submit</button>

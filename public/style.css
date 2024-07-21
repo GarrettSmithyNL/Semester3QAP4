@@ -4,7 +4,7 @@ html {
 
 body {
   margin: auto;
-  width: 50%;
+  width: 55%;
   font-family: Arial, sans-serif;
 }
 
@@ -198,5 +198,210 @@ nav a:hover {
 
 .addItemsOptions {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.addItemsOptions button {
+  width: 30%;
+}
+
+.addItemsOptions .checkBox {
+  width: 40%;
+  text-align: center;
+}
+
+.addItemsOptions .textInput {
+  width: 40%;
+  text-align: center;
+}
+
+.addItemsOptions .selectMenu {
+  width: 40%;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  background-color: SaddleBrown;
+  border: 8px solid Goldenrod;
+  border-radius: 32px;
+  color: Wheat;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 5px;
+}
+
+.status {
+  color: saddlebrown;
+
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.welcome {
+  text-align: center;
+  background-color: SaddleBrown;
+  border: 8px solid Goldenrod;
+  border-radius: 32px;
+  color: Wheat;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 5px;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  background-color: saddlebrown;
+  border: 8px solid Goldenrod;
+  border-radius: 24px;
+  color: Wheat;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.itemInfo button {
+  margin: 5px;
+  padding: 5px;
+  font-size: 18px;
+  background-color: saddlebrown;
+  color: wheat;
+  border: 3px solid Goldenrod;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.itemInfo a {
+  width: 35%;
+  margin-bottom: 20px;
+}
+
+.itemInfo button:hover {
+  background-color: Goldenrod;
+  color: saddlebrown;
+}
+
+.itemInfo h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.itemInfo p {
+  width: 50%;
+  text-align: center;
+}
+
+.itemInfo .delete {
+  background-color: crimson;
+}
+
+.itemInfo .delete:hover {
+  background-color: goldenrod;
+}
+
+.itemHeader {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.itemDelete {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: saddlebrown;
+  border: 8px solid Goldenrod;
+  border-radius: 24px;
+  color: Wheat;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.itemDelForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 60%;
+}
+
+.itemDelForm label {
+  font-size: 18px;
+  width: 80%;
+}
+
+.itemDelButton {
+  background-color: saddlebrown;
+  color: wheat;
+  border: 3px solid Goldenrod;
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 18px;
+  width: 10%;
+}
+
+.itemDelButton:hover {
+  background-color: Goldenrod;
+  color: saddlebrown;
+}
+
+#goBack {
+  text-align: center;
+  text-decoration: none;
+}
+
+#delete {
+  background-color: crimson;
+  width: 20%;
+}
+
+#delete:hover {
+  background-color: goldenrod;
+}
+
+.editItemsOptions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.editItemsOptions button {
+  width: 30%;
+}
+
+.editItemsOptions .checkBox {
+  width: 40%;
+  text-align: center;
+}
+
+.editItemsOptions .textInput {
+  width: 40%;
+  text-align: center;
+}
+
+.editItemsOptions .selectMenu {
+  width: 40%;
+  text-align: center;
+}
+
+#editTrade {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }

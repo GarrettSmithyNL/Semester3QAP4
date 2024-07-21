@@ -2,17 +2,21 @@
   <%- include('./partials/head') %>
   <body>
     <%- include('./partials/nav') %>
-    <div>
+    <div class="itemDelete">
       <form
         action="/items/<%= item.item_id %>/<%= locals.theID %>?_method=DELETE"
         method="POST"
+        class="itemDelForm"
       >
         <label>
-          Are you sure you want to delete this item?
-          <br />
-          <button>DELETE</button>
+          Are you sure you want to delete <%= item.item_name %>?
         </label>
+        <button id="delete" class="itemDelButton">YES</button>
       </form>
+      <a id="goBack" class="itemDelButton" href="/items/<%= item.item_id %>">
+        NO
+      </a>
     </div>
   </body>
+  <%- include('./partials/footer') %>
 </html>

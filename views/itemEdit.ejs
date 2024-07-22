@@ -4,6 +4,7 @@
     <%- include('./partials/nav') %>
     <div class="addItem">
     <h1>Edit Item - <%=item.item_id%></h1>
+    <!-- Form to edit an item -->
     <form
       action="/items/<%= item.item_id %>/<%= locals.theID %>?_method=PATCH"
       method="POST"

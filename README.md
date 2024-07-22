@@ -1,2 +1,9 @@
 # Semester3QAP4
-QAP 4 for both Full Stack and Database Courses
+
+# To Start
+
+You will need to set your password for PGAdmin in the osrs_items_db.js file
+
+# To Run
+
+Open a terminal in the folder that you saved this project in, and run the command "node index"

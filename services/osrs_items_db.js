@@ -9,7 +9,7 @@ const pool = new Pool({
   // Setting the database to QAP4
   database: "QAP4",
   // Setting the password
-  password: "New10Bill",
+  password: "", //Your password here
   // Setting the port to 5432
   port: 5432,
 });
